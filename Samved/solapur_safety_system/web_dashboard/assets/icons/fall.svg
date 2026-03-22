@@ -1,0 +1,13 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background Circle -->
+    <circle cx="25" cy="25" r="22" fill="#e74c3c" fill-opacity="0.2" stroke="#e74c3c" stroke-width="2"/>
+    
+    <!-- Falling Person -->
+    <circle cx="25" cy="15" r="5" fill="#e74c3c"/>
+    <line x1="25" y1="20" x2="25" y2="30" stroke="#e74c3c" stroke-width="3"/>
+    <line x1="25" y1="25" x2="15" y2="35" stroke="#e74c3c" stroke-width="3"/>
+    <line x1="25" y1="25" x2="35" y2="35" stroke="#e74c3c" stroke-width="3"/>
+    
+    <!-- Arrow Down -->
+    <path d="M25 38 L30 33 L20 33 L25 38Z" fill="#e74c3c"/>
+</svg>

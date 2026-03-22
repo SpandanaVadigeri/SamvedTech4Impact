@@ -1,0 +1,10 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background Circle -->
+    <circle cx="25" cy="25" r="22" fill="#f39c12" fill-opacity="0.2" stroke="#f39c12" stroke-width="2"/>
+    
+    <!-- CH4 Text -->
+    <text x="25" y="30" text-anchor="middle" fill="#f39c12" font-size="18" font-weight="bold">CH₄</text>
+    
+    <!-- Flame Symbol -->
+    <path d="M25 8 Q30 15 25 20 Q20 15 25 8Z" fill="#f39c12"/>
+</svg>

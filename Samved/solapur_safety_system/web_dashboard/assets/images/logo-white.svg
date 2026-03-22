@@ -1,0 +1,24 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background Circle -->
+    <circle cx="100" cy="100" r="90" fill="#ffffff" stroke="#3498db" stroke-width="4"/>
+    
+    <!-- Hard Hat Icon -->
+    <path d="M100 40 L60 70 L60 110 L100 140 L140 110 L140 70 L100 40Z" fill="#f39c12" stroke="#e67e22" stroke-width="4"/>
+    <circle cx="100" cy="90" r="15" fill="#2c3e50"/>
+    
+    <!-- Gas Warning Symbol -->
+    <path d="M100 160 L120 130 L80 130 L100 160Z" fill="#e74c3c"/>
+    <circle cx="100" cy="115" r="8" fill="#e74c3c"/>
+    
+    <!-- Shield of Protection -->
+    <path d="M100 20 L130 30 L130 70 L100 90 L70 70 L70 30 L100 20Z" fill="#3498db" fill-opacity="0.3" stroke="#3498db" stroke-width="2"/>
+    
+    <!-- City Silhouette -->
+    <rect x="40" y="170" width="15" height="20" fill="#34495e"/>
+    <rect x="60" y="155" width="15" height="35" fill="#34495e"/>
+    <rect x="80" y="140" width="15" height="50" fill="#34495e"/>
+    <rect x="100" y="125" width="15" height="65" fill="#34495e"/>
+    <rect x="120" y="140" width="15" height="50" fill="#34495e"/>
+    <rect x="140" y="155" width="15" height="35" fill="#34495e"/>
+    <rect x="160" y="170" width="15" height="20" fill="#34495e"/>
+</svg>

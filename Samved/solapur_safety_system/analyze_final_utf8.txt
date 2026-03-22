@@ -1,0 +1,6 @@
+﻿Analyzing solapur_safety_system...                              
+
+  error - The named parameter 'license' is required, but there's no corresponding argument - lib\services\ble_service.dart:71:20 - missing_required_argument
+   info - 'Share' is deprecated and shouldn't be used. Use SharePlus instead - lib\services\database_service.dart:152:11 - deprecated_member_use
+   info - 'shareXFiles' is deprecated and shouldn't be used. Use SharePlus.instance.share() instead - lib\services\database_service.dart:152:17 - deprecated_member_use
+

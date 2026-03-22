@@ -1,0 +1,11 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background Circle -->
+    <circle cx="25" cy="25" r="22" fill="#e74c3c" fill-opacity="0.2" stroke="#e74c3c" stroke-width="2"/>
+    
+    <!-- H2S Text -->
+    <text x="25" y="30" text-anchor="middle" fill="#e74c3c" font-size="18" font-weight="bold">H₂S</text>
+    
+    <!-- Warning Symbol -->
+    <path d="M25 8 L28 15 L22 15 L25 8Z" fill="#e74c3c"/>
+    <circle cx="25" cy="20" r="2" fill="#e74c3c"/>
+</svg>

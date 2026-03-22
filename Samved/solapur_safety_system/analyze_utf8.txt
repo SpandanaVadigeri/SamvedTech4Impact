@@ -1,0 +1,31 @@
+﻿Analyzing solapur_safety_system...                              
+
+   info - The private field _devices could be 'final' - lib\providers\app_state.dart:25:21 - prefer_final_fields
+   info - The private field _activeAlerts could be 'final' - lib\providers\app_state.dart:33:22 - prefer_final_fields
+warning - Unused import: '../services/safety_engine_service.dart' - lib\screens\dashboard_screen.dart:5:8 - unused_import
+warning - Unused import: '../services/database_service.dart' - lib\screens\dashboard_screen.dart:6:8 - unused_import
+warning - Unused import: 'package:provider/provider.dart' - lib\screens\logs_screen.dart:2:8 - unused_import
+warning - Unused import: '../providers/app_state.dart' - lib\screens\logs_screen.dart:3:8 - unused_import
+   info - Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check - lib\screens\logs_screen.dart:36:28 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check - lib\screens\logs_screen.dart:39:28 - use_build_context_synchronously
+   info - The constant name 'HELMET_SERVICE' isn't a lowerCamelCase identifier - lib\services\ble_service.dart:12:23 - constant_identifier_names
+   info - The constant name 'H2S_CHAR' isn't a lowerCamelCase identifier - lib\services\ble_service.dart:13:23 - constant_identifier_names
+   info - The constant name 'CH4_CHAR' isn't a lowerCamelCase identifier - lib\services\ble_service.dart:14:23 - constant_identifier_names
+   info - The constant name 'CO_CHAR' isn't a lowerCamelCase identifier - lib\services\ble_service.dart:15:23 - constant_identifier_names
+   info - The constant name 'O2_CHAR' isn't a lowerCamelCase identifier - lib\services\ble_service.dart:16:23 - constant_identifier_names
+   info - The constant name 'COMMAND_CHAR' isn't a lowerCamelCase identifier - lib\services\ble_service.dart:17:23 - constant_identifier_names
+   info - The constant name 'VITAL_SERVICE' isn't a lowerCamelCase identifier - lib\services\ble_service.dart:19:23 - constant_identifier_names
+   info - The constant name 'HR_MEASUREMENT_CHAR' isn't a lowerCamelCase identifier - lib\services\ble_service.dart:20:23 - constant_identifier_names
+   info - Don't invoke 'print' in production code - lib\services\ble_service.dart:56:23 - avoid_print
+  error - The named parameter 'license' is required, but there's no corresponding argument - lib\services\ble_service.dart:70:20 - missing_required_argument
+   info - Don't invoke 'print' in production code - lib\services\ble_service.dart:83:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\ble_service.dart:145:7 - avoid_print
+   info - The imported package 'path' isn't a dependency of the importing package - lib\services\database_service.dart:3:8 - depend_on_referenced_packages
+warning - Unused import: '../models/device_state.dart' - lib\services\database_service.dart:7:8 - unused_import
+   info - 'Share' is deprecated and shouldn't be used. Use SharePlus instead - lib\services\database_service.dart:153:11 - deprecated_member_use
+   info - 'shareXFiles' is deprecated and shouldn't be used. Use SharePlus.instance.share() instead - lib\services\database_service.dart:153:17 - deprecated_member_use
+warning - Unused import: 'package:flutter/foundation.dart' - lib\services\system_controller.dart:2:8 - unused_import
+warning - Unused import: 'safety_engine_service.dart' - lib\services\system_controller.dart:7:8 - unused_import
+   info - Use interpolation to compose strings and values - lib\services\system_controller.dart:51:19 - prefer_interpolation_to_compose_strings
+  error - The name 'MyApp' isn't a class - test\widget_test.dart:16:35 - creation_with_non_type
+

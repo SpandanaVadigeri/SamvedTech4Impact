@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solapur Safety System - Control Center Dashboard</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Charts & Maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <!-- Socket.IO for real-time -->
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fas fa-hard-hat"></i>
+            <span>Solapur Safety</span>
+        </div>
+        
+        <nav class="nav-menu">
+            <a href="#dashboard" class="nav-item active" data-page="dashboard">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#map" class="nav-item" data-page="map">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>Live Map</span>
+            </a>
+            <a href="#workers" class="nav-item" data-page="workers">
+                <i class="fas fa-users"></i>
+                <span>Workers</span>
+            </a>
+            <a href="#sessions" class="nav-item" data-page="sessions">
+                <i class="fas fa-clock"></i>
+                <span>Sessions</span>
+            </a>
+            <a href="#alerts" class="nav-item" data-page="alerts">
+                <i class="fas fa-bell"></i>
+                <span>Alerts</span>
+                <span class="badge" id="alert-badge">0</span>
+            </a>
+            <a href="#analytics" class="nav-item" data-page="analytics">
+                <i class="fas fa-chart-line"></i>
+                <span>Analytics</span>
+            </a>
+            <a href="#settings" class="nav-item" data-page="settings">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+        
+        <div class="user-info">
+            <div class="user-avatar">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="user-details">
+                <div class="user-name" id="user-name">Control Admin</div>
+                <div class="user-role" id="user-role">Control Center</div>
+            </div>
+            <button class="logout-btn" id="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="page-title" id="page-title">Dashboard</div>
+            <div class="top-bar-actions">
+                <div class="connection-status" id="connection-status">
+                    <i class="fas fa-circle"></i>
+                    <span>Connected</span>
+                </div>
+                <div class="datetime" id="datetime"></div>
+                <button class="refresh-btn" id="refresh-btn">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page active">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-label">Active Workers</div>
+                        <div class="stat-value" id="active-workers">0</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> <span id="worker-change">+2 today</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-label">Active Alerts</div>
+                        <div class="stat-value" id="active-alerts">0</div>
+                        <div class="stat-change" id="alert-change">
+                            <span class="critical">3 critical</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-label">Safe Sessions</div>
+                        <div class="stat-value" id="safe-sessions">0</div>
+                        <div class="stat-change">24h safe</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-label">Avg Response</div>
+                        <div class="stat-value" id="avg-response">0s</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-check"></i> within limit
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Live Map Preview -->
+                <div class="card map-preview">
+                    <div class="card-header">
+                        <h3><i class="fas fa-map-marker-alt"></i> Live Operations Map</h3>
+                        <button class="card-action" onclick="window.location.href='#map'">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div id="preview-map" style="height: 250px;"></div>
+                    </div>
+                </div>
+
+                <!-- Gas Levels Chart -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Real-time Gas Levels</h3>
+                        <div class="chart-controls">
+                            <select id="gas-chart-range">
+                                <option value="1">Last hour</option>
+                                <option value="6" selected>Last 6 hours</option>
+                                <option value="24">Last 24 hours</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="gas-chart" height="200"></canvas>
+                    </div>
+                </div>
+
+                <!-- Worker Status -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-users"></i> Worker Status</h3>
+                        <button class="card-action" onclick="window.location.href='#workers'">
+                            View All <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="card-content" id="worker-cards-container">
+                        <!-- Worker cards will be injected here -->
+                    </div>
+                </div>
+
+                <!-- Recent Alerts -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-bell"></i> Recent Alerts</h3>
+                        <button class="card-action" onclick="window.location.href='#alerts'">
+                            View All <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="card-content" id="alerts-feed-container">
+                        <!-- Alerts will be injected here -->
+                    </div>
+                </div>
+
+                <!-- Session Stats -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-pie"></i> Session Statistics</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="stats-mini-grid">
+                            <div class="stat-mini">
+                                <div class="stat-mini-label">Today's Sessions</div>
+                                <div class="stat-mini-value" id="today-sessions">0</div>
+                            </div>
+                            <div class="stat-mini">
+                                <div class="stat-mini-label">Total Workers</div>
+                                <div class="stat-mini-value" id="total-workers">0</div>
+                            </div>
+                            <div class="stat-mini">
+                                <div class="stat-mini-label">Avg Duration</div>
+                                <div class="stat-mini-value" id="avg-duration">0m</div>
+                            </div>
+                        </div>
+                        <canvas id="session-pie-chart" height="150"></canvas>
+                    </div>
+                </div>
+
+                <!-- Exposure Summary -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-exposure"></i> Worker Exposure</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="exposure-bars" id="exposure-bars">
+                            <!-- Exposure bars will be injected here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map Page -->
+        <div id="map-page" class="page">
+            <div class="card full-height">
+                <div class="card-header">
+                    <h3><i class="fas fa-map"></i> Live Operations Map</h3>
+                    <div class="map-controls">
+                        <button id="map-recenter" class="btn-small">
+                            <i class="fas fa-crosshairs"></i> Recenter
+                        </button>
+                        <button id="map-layers" class="btn-small">
+                            <i class="fas fa-layer-group"></i> Layers
+                        </button>
+                    </div>
+                </div>
+                <div class="card-content no-padding">
+                    <div id="full-map" style="height: calc(100vh - 180px);"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Workers Page -->
+        <div id="workers-page" class="page">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-users"></i> All Workers</h3>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="worker-search" placeholder="Search workers...">
+                    </div>
+                </div>
+                <div class="card-content">
+                    <table class="data-table" id="workers-table">
+                        <thead>
+                            <tr>
+                                <th>Worker ID</th>
+                                <th>Name</th>
+                                <th>Status</th>
+                                <th>Heart Rate</th>
+                                <th>Location</th>
+                                <th>Session</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="workers-table-body">
+                            <!-- Worker rows will be injected here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alerts Page -->
+        <div id="alerts-page" class="page">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-bell"></i> Alert Management</h3>
+                    <div class="alert-filters">
+                        <select id="alert-severity-filter">
+                            <option value="all">All Severities</option>
+                            <option value="critical">Critical</option>
+                            <option value="warning">Warning</option>
+                            <option value="info">Info</option>
+                        </select>
+                        <select id="alert-status-filter">
+                            <option value="all">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="acknowledged">Acknowledged</option>
+                            <option value="resolved">Resolved</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div id="alerts-table-container">
+                        <!-- Alerts table will be injected here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sessions Page -->
+        <div id="sessions-page" class="page">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-clock"></i> Active Sessions</h3>
+                </div>
+                <div class="card-content">
+                    <div id="sessions-container">
+                        <!-- Sessions will be injected here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analytics Page -->
+        <div id="analytics-page" class="page">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-chart-bar"></i> Safety Analytics</h3>
+                    <div class="date-range">
+                        <input type="date" id="analytics-start" value="2026-03-01">
+                        <span>to</span>
+                        <input type="date" id="analytics-end" value="2026-03-17">
+                        <button id="analytics-update" class="btn-small">Update</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="analytics-grid">
+                        <div class="analytics-card">
+                            <h4>Risk Distribution</h4>
+                            <canvas id="risk-pie-chart" height="200"></canvas>
+                        </div>
+                        <div class="analytics-card">
+                            <h4>Hourly Risk Pattern</h4>
+                            <canvas id="hourly-risk-chart" height="200"></canvas>
+                        </div>
+                        <div class="analytics-card full-width">
+                            <h4>Gas Trends</h4>
+                            <canvas id="trends-chart" height="250"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Page -->
+        <div id="settings-page" class="page">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-cog"></i> System Settings</h3>
+                </div>
+                <div class="card-content">
+                    <div class="settings-grid">
+                        <div class="settings-section">
+                            <h4>Threshold Configuration</h4>
+                            <div class="setting-item">
+                                <label>H2S Caution (ppm)</label>
+                                <input type="number" id="th-h2s-caution" value="5.0" step="0.1">
+                            </div>
+                            <div class="setting-item">
+                                <label>H2S Block (ppm)</label>
+                                <input type="number" id="th-h2s-block" value="10.0" step="0.1">
+                            </div>
+                            <div class="setting-item">
+                                <label>O2 Caution (%)</label>
+                                <input type="number" id="th-o2-caution" value="20.8" step="0.1">
+                            </div>
+                            <div class="setting-item">
+                                <label>O2 Block (%)</label>
+                                <input type="number" id="th-o2-block" value="19.5" step="0.1">
+                            </div>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>Alert Escalation</h4>
+                            <div class="setting-item">
+                                <label>Level 1 (seconds)</label>
+                                <input type="number" id="esc-level1" value="5" min="1">
+                            </div>
+                            <div class="setting-item">
+                                <label>Level 2 (seconds)</label>
+                                <input type="number" id="esc-level2" value="10" min="1">
+                            </div>
+                            <div class="setting-item">
+                                <label>Level 3 (seconds)</label>
+                                <input type="number" id="esc-level3" value="15" min="1">
+                            </div>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>Notifications</h4>
+                            <div class="setting-item checkbox">
+                                <label>
+                                    <input type="checkbox" id="notif-email" checked>
+                                    Email Alerts
+                                </label>
+                            </div>
+                            <div class="setting-item checkbox">
+                                <label>
+                                    <input type="checkbox" id="notif-sms" checked>
+                                    SMS Emergency
+                                </label>
+                            </div>
+                            <div class="setting-item checkbox">
+                                <label>
+                                    <input type="checkbox" id="notif-sound" checked>
+                                    Sound Alerts
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>System</h4>
+                            <div class="setting-item">
+                                <label>Data Retention (days)</label>
+                                <input type="number" id="data-retention" value="30" min="7">
+                            </div>
+                            <div class="setting-item">
+                                <button id="save-settings" class="btn-primary">Save Settings</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Modal -->
+    <div id="alert-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Alert Details</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body" id="alert-modal-body">
+                <!-- Alert details will be injected here -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal()">Close</button>
+                <button class="btn-primary" id="acknowledge-alert-btn">Acknowledge</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="components/gasGauges.js"></script>
+    <script src="components/workerCards.js"></script>
+    <script src="components/alertsFeed.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

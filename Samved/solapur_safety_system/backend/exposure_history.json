@@ -1,0 +1,12 @@
+[
+  {
+    "workerId": "worker",
+    "manholeId": "MH-SOLAPUR-01",
+    "startTime": "2026-03-22T11:52:27.993886",
+    "endTime": "2026-03-22T11:52:31.609413",
+    "duration": 3,
+    "avgGas": 1.84,
+    "maxGas": 1.84,
+    "savedAt": "2026-03-22T06:22:30.956Z"
+  }
+]

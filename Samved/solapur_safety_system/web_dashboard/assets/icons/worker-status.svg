@@ -1,0 +1,11 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Worker Silhouette -->
+    <circle cx="25" cy="15" r="8" fill="#ecf0f1"/>
+    <path d="M10 35 Q25 45 40 35 L35 25 Q25 30 15 25 L10 35Z" fill="#ecf0f1"/>
+    
+    <!-- Hard Hat -->
+    <path d="M17 10 L33 10 L35 15 L15 15 L17 10Z" fill="#f39c12"/>
+    
+    <!-- Status Dot (to be colored by CSS) -->
+    <circle cx="40" cy="10" r="5" class="status-dot" fill="currentColor"/>
+</svg>

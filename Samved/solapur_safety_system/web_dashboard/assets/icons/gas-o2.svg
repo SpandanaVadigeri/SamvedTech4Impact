@@ -1,0 +1,11 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background Circle -->
+    <circle cx="25" cy="25" r="22" fill="#3498db" fill-opacity="0.2" stroke="#3498db" stroke-width="2"/>
+    
+    <!-- O2 Text -->
+    <text x="25" y="30" text-anchor="middle" fill="#3498db" font-size="18" font-weight="bold">O₂</text>
+    
+    <!-- Lungs Symbol -->
+    <path d="M18 15 Q15 20 18 25 Q21 30 18 35" stroke="#3498db" stroke-width="2" fill="none"/>
+    <path d="M32 15 Q35 20 32 25 Q29 30 32 35" stroke="#3498db" stroke-width="2" fill="none"/>
+</svg>

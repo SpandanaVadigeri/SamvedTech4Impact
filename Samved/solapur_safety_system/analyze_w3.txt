@@ -1,0 +1,35 @@
+﻿Resolving dependencies...
+Downloading packages...
+  meta 1.17.0 (1.18.2 available)
+  native_toolchain_c 0.17.5 (0.17.6 available)
+  test_api 0.7.10 (0.7.11 available)
+  vector_math 2.2.0 (2.3.0 available)
+  win32 5.15.0 (6.0.0 available)
+Got dependencies!
+5 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Analyzing 2 items...                                            
+
+   info - The prefix 'IO' isn't a lower_case_with_underscores identifier - lib\services\socket_service.dart:1:60 - library_prefixes
+   info - Don't invoke 'print' in production code - lib\services\socket_service.dart:22:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\socket_service.dart:51:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\socket_service.dart:61:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\services\socket_service.dart:68:7 - avoid_print
+
+flutter : 5 issues found. 
+(ran in 1.4s)
+At line:1 char:1
++ flutter analyze lib/screens
+/worker_dashboard.dart 
+lib/services/socket ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (5 issue  
+  s found. (ran in 1.4s):S   
+ tring) [], RemoteExcepti    
+on
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 

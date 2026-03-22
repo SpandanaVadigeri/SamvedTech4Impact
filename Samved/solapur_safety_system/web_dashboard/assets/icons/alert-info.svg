@@ -1,0 +1,11 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background Circle -->
+    <circle cx="25" cy="25" r="22" fill="#3498db" fill-opacity="0.2" stroke="#3498db" stroke-width="2"/>
+    
+    <!-- Info Circle -->
+    <circle cx="25" cy="25" r="15" fill="#3498db" fill-opacity="0.3" stroke="#3498db" stroke-width="2"/>
+    
+    <!-- Info Letter 'i' -->
+    <circle cx="25" cy="18" r="2" fill="#3498db"/>
+    <rect x="23" y="23" width="4" height="10" fill="#3498db" rx="2"/>
+</svg>

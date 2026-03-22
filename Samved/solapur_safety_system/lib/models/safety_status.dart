@@ -1,0 +1,1 @@
+enum SafetyStatus {safe, caution, block}

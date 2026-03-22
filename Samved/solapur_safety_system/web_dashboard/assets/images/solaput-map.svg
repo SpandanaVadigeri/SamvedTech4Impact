@@ -1,0 +1,32 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="400" height="300" fill="#1a2632"/>
+    
+    <!-- Map Grid -->
+    <path d="M50 50 L350 50 M50 100 L350 100 M50 150 L350 150 M50 200 L350 200 M50 250 L350 250" stroke="#2c3e50" stroke-width="1"/>
+    <path d="M50 50 L50 250 M100 50 L100 250 M150 50 L150 250 M200 50 L200 250 M250 50 L250 250 M300 50 L300 250 M350 50 L350 250" stroke="#2c3e50" stroke-width="1"/>
+    
+    <!-- Solapur City Area -->
+    <rect x="120" y="80" width="160" height="120" fill="#3498db" fill-opacity="0.1" stroke="#3498db" stroke-width="2"/>
+    
+    <!-- Manhole Locations -->
+    <circle cx="150" cy="120" r="8" fill="#e74c3c" stroke="white" stroke-width="2"/>
+    <circle cx="200" cy="150" r="8" fill="#f39c12" stroke="white" stroke-width="2"/>
+    <circle cx="250" cy="100" r="8" fill="#27ae60" stroke="white" stroke-width="2"/>
+    <circle cx="180" cy="180" r="8" fill="#e74c3c" stroke="white" stroke-width="2"/>
+    <circle cx="280" cy="140" r="8" fill="#f39c12" stroke="white" stroke-width="2"/>
+    
+    <!-- Roads -->
+    <path d="M100 100 L300 100" stroke="#bdc3c7" stroke-width="3" stroke-dasharray="5 5"/>
+    <path d="M150 50 L150 200" stroke="#bdc3c7" stroke-width="3" stroke-dasharray="5 5"/>
+    
+    <!-- Labels -->
+    <text x="140" y="110" fill="white" font-size="8">MH-023</text>
+    <text x="190" y="140" fill="white" font-size="8">MH-045</text>
+    <text x="240" y="90" fill="white" font-size="8">MH-067</text>
+    <text x="170" y="170" fill="white" font-size="8">MH-089</text>
+    <text x="270" y="130" fill="white" font-size="8">MH-012</text>
+    
+    <!-- Title -->
+    <text x="200" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Solapur Municipal Zone</text>
+</svg>

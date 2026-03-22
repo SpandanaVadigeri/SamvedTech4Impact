@@ -1,0 +1,67 @@
+{
+  "users": [
+    {
+      "id": "u1",
+      "username": "admin",
+      "password_hash": "$2a$10$fYtp2N9ft67UxNvAyjiZ5.isx3hDSL4iDe4L5Ig0B/1kaqbggnSeS",
+      "role": "admin",
+      "created_at": "2026-03-21T12:29:12.945Z"
+    },
+    {
+      "id": "u2",
+      "username": "supervisor",
+      "password_hash": "$2a$10$fYtp2N9ft67UxNvAyjiZ5.DAqeqeg9HX9Fuzf8GdMDEfb8SpER27e",
+      "role": "supervisor",
+      "created_at": "2026-03-21T12:29:12.956Z"
+    },
+    {
+      "id": "u3",
+      "username": "worker",
+      "password_hash": "$2a$10$fYtp2N9ft67UxNvAyjiZ5.MiHEXVOBEZVyK7vrY9r4gt5BmGuH0QC",
+      "role": "worker",
+      "created_at": "2026-03-21T12:29:12.956Z"
+    },
+    {
+      "id": "83b70652-eb0a-4faa-bdfe-c9106706b059",
+      "username": "worker_05",
+      "password_hash": "$2a$10$JK8MwXWtUZLy0KhmCPX5vuO/dW70yqBcGw039Rpur5cYcatwv14iq",
+      "role": "worker",
+      "created_at": "2026-03-22T05:11:01.792Z"
+    },
+    {
+      "id": "580d2ef1-fc8d-4862-8f0b-b3af25381934",
+      "username": "worker_01",
+      "password_hash": "$2a$10$TOEDf9/Eqws1Re.vxuwEVuz96SQSty6aW7CGFaCNnm5Oxyec3MOFe",
+      "role": "worker",
+      "created_at": "2026-03-22T05:26:05.817Z"
+    },
+    {
+      "id": "f5b0966d-1f00-4650-afc3-388d3dc57db7",
+      "username": "supervisor01",
+      "password_hash": "$2a$10$yQzis.a1PuqWhnERCDCxdOOh2XonTyYYRozDZbW2/rLFpInJbC4kG",
+      "role": "supervisor",
+      "created_at": "2026-03-22T05:26:28.804Z"
+    },
+    {
+      "id": "7c31cac6-7788-46bf-a538-ffa0ec575054",
+      "username": "supervisor_23",
+      "password_hash": "$2a$10$22TVEZiEpRgPOO/0QJezC.jQTNJG4zb/LhaDKG9iVW4kIjeXLQh.e",
+      "role": "supervisor",
+      "created_at": "2026-03-22T07:30:46.975Z"
+    },
+    {
+      "id": "46558707-2a0e-4a6c-9f6f-1574144bddb5",
+      "username": "worker_23",
+      "password_hash": "$2a$10$GlQqx9d1WxYCiUcuq2MjD..t5t6rtuCtZ3UOzFOYCpH.E0aj.sLwK",
+      "role": "worker",
+      "created_at": "2026-03-22T07:31:11.841Z"
+    },
+    {
+      "id": "94b429c5-9402-4d3f-972b-60c890829cff",
+      "username": "worker_005",
+      "password_hash": "$2a$10$H60BaVQoSOrqYxCW8hQoTu4dKc9TWvKEsNpqplo5RLL7xa0jV7bB6",
+      "role": "worker",
+      "created_at": "2026-03-22T10:07:20.376Z"
+    }
+  ]
+}
